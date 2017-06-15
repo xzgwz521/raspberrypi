@@ -45,8 +45,7 @@ def show_img(img_path, x0, y0):
 
 
 loop = 0
-updatingtime = ""
-
+updatetime = ""
 while True:
     screen.fill(pygame.Color(0, 0, 0))
 
@@ -86,7 +85,7 @@ while True:
 
         weather_now = json_now['results'][0]
         weather_daily = json_daily['results'][0]
-        updatingtime = time.strftime("%H:%M:%S", mylocaltime)
+        updatetime = time.strftime("%H:%M:%S", mylocaltime)
 
     # 显示天气
     # 显示实时天气
@@ -143,7 +142,7 @@ while True:
     show_str('温度  ' + temp_low_2, width/33*23, height/33*28, size=30)
     show_img('Img-60/' + weather_daily['daily'][2]['code_night'] + ".png", width/33*29, height/33*26.5)
 
-    show_str('Last update: ' + updatingtime, 10, height-25, 15)
+    show_str('Last update: ' + updatetime, width/33*26, height/33*31, 15)
 
     pygame.display.update()
     time.sleep(0.1)
