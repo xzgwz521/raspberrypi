@@ -2,14 +2,20 @@ from urllib import request, parse
 import json
 
 
-class Weather:
-    def __init__(self, location='hangzhou'):
-        self.location = location
+class City:
+    def __init__(self, name='hangzhou'):
+        self.name = name
+
+    def get_weather_of_city(self):
+        pass
+
+    def get_temp_of_city(self):
+        pass
 
     def get_weather_now(self):
         try:
             req = request.Request('https://api.seniverse.com/v3/weather/now.'
-                                  'json?key=u5l6zgrzcdcagkmz&location=' + self.location + '&language=zh-Hans&unit=c')
+                                  'json?key=u5l6zgrzcdcagkmz&location=' + self.name + '&language=zh-Hans&unit=c')
             response = request.urlopen(req).read().decode('UTF-8')
             json_now = json.loads(response)
             return json_now
@@ -19,7 +25,7 @@ class Weather:
     def get_weather_daily(self):
         try:
             req = request.Request('https://api.seniverse.com/v3/weather/daily.'
-                                  'json?key=u5l6zgrzcdcagkmz&location=' + self.location +
+                                  'json?key=u5l6zgrzcdcagkmz&location=' + self.name +
                                   '&language=zh-Hans&unit=c&start=0&days=3')
             response = request.urlopen(req).read().decode('UTF-8')
             json_daily = json.loads(response)
@@ -29,6 +35,6 @@ class Weather:
 
 
 if __name__ == '__main__':
-    weather = Weather('beijing')
-    print(weather.location)
-    print(weather.get_weather_now())
+    hangzhou = City('hangzhou')
+    print(hangzhou.name)
+    print(hangzhou.get_weather_now())
