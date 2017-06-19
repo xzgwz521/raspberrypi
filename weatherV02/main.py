@@ -38,7 +38,7 @@ def show_str(my_string, x0, y0, size):
 
 
 def show_img(img_path, x0, y0):
-    background=pygame.image.load(img_path)
+    background = pygame.image.load(img_path)
     background.convert_alpha()
     screen.blit(background, (x0, y0))
     return
